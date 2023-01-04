@@ -62,15 +62,15 @@ const Calculator: FC = () => {
   };
   return (
     <>
-      <div className="h-[90vh]">
+      <div className="bg-[#FF6E7F] p-6 h-[90vh] mt-10 rounded-lg shadow-lg">
         <div className="mx-auto w-[90%] lg:w-[4/5] md:w-[450px] container">
-          <div className="mt-10 text-center">
+          <div className="text-center">
             <div className="wrapper">
-              <h2 className="pb-3 text-3xl font-semibold">Loan Calculator</h2>
+              <h2 className="pb-1 text-3xl font-semibold font-Lacq">Loan Calculator</h2>
               <form onSubmit={Calculate}>
                 <div className="amount-group py-3">
-                  <div className="border w-full shadow-lg rounded-lg h-[50px] flex items-center">
-                    <span className="bg-gray-400 border-none p-3 rounded-tl-lg rounded-bl-lg text-xl h-[50px] font-semibold">
+                  <div className="border-b-2 border-black w-full shadow-lg rounded-lg h-[50px] flex items-center text-lg font-semibold">
+                    <span className="bg-black text-white border-none p-3 rounded-tl-lg rounded-bl-lg text-xl h-[50px] font-bold">
                       ₦
                     </span>
                     <input
@@ -84,8 +84,8 @@ const Calculator: FC = () => {
                 </div>
 
                 <div className="interest-group py-3">
-                  <div className="border w-full shadow-lg rounded-lg h-[50px] flex items-center">
-                    <span className="bg-gray-400 border-none p-3 rounded-tl-lg rounded-bl-lg text-xl h-[50px] font-bold">
+                  <div className="border-b-2 border-black w-full shadow-lg rounded-lg h-[50px] flex items-center text-lg font-semibold">
+                    <span className="bg-black text-white border-none p-3 rounded-tl-lg rounded-bl-lg text-xl h-[50px] font-bold">
                       %
                     </span>
                     <input
@@ -99,7 +99,7 @@ const Calculator: FC = () => {
                 </div>
 
                 <div className="duration-group py-3">
-                  <div className="border w-full shadow-lg rounded-lg h-[50px] flex items-center">
+                  <div className="border-b-2 border-black w-full shadow-lg rounded-lg h-[50px] flex items-center text-lg font-semibold">
                     <input
                       type="number"
                       className="p-3 border-none outline-none bg-transparent w-full h-[50px]"
@@ -178,12 +178,12 @@ const Calculator: FC = () => {
               )}
 
               {error && (
-                <div className="wrapper p-4">
+                <div className="wrapper">
                   <div className="empty flex flex-col justify-center items-center">
                     <span className="">
-                      <img src={Empty} alt="Emptty data icon" srcSet="" />
+                      <img src={Empty} className='w-4/5 mx-auto' alt="Emptty data icon" srcSet="" />
                     </span>
-                    <h5 className=" text-xl font-bold text-gray-600 my-3 text-center">
+                    <h5 className=" text-xl font-bold text-black font-Lacq my-1.5 text-center">
                       Please check your input
                     </h5>
                   </div>

@@ -167,7 +167,7 @@ const Player: FC = () => {
   return (
     <>
       <div className="grid place-items-center h-[95vh]">
-        <div className="player relative flex flex-col lg:flex-row min-h-[90vh] w-full lg:h-4/5 lg:w-4/5 items-center justify-center bg-gradient-to-r from-[#5D6D7E] to-[#566573]">
+        <div className="player relative flex flex-col rounded-lg lg:flex-row min-h-[90vh] w-full lg:h-4/5  items-center justify-center bg-gradient-to-r from-[#5D6D7E] to-[#566573]">
           <div className="logo flex items-center absolute top-2.5 left-[30px] text-[#ccc]">
             <SiApplemusic size={32} className="mr-2" /> Music
           </div>
@@ -209,17 +209,17 @@ const Player: FC = () => {
 
           {/* Right Side */}
           <div className="right relative h-full w-1/2 flex items-center justify-center flex-col">
-            <div className="song_Num top-[76px] fixed lg:absolute flex items-center justify-center right-2.5 lg:top-2.5 py-1 px-2.5 text-base text-white rounded-md bg-[rgba(255,255,255,0.2)]">
+            <div className="song_Num top-[56px] fixed lg:absolute flex items-center justify-center right-2.5 md:right-[70px] lg:right-2.5 lg:top-2.5 py-1 px-2.5 text-base text-white rounded-md bg-[rgba(255,255,255,0.2)]">
               <span className="current mr-1">{singer}</span>
               <span className="">/</span>
               <span className="total ml-1">{allMusic.length}</span>
             </div>
 
             <div className="">
-              <div className="songTitle lg:absolute fixed top-[88px] md:top-[80px] left-auto lg:top-[60px] lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-3xl first-letter:uppercase">
+              <div className="songTitle lg:absolute fixed top-[75px] lg:w-52 left-auto lg:top-[60px] lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-3xl first-letter:uppercase">
                 {title}
               </div>
-              <div className="artisteName lg:absolute fixed top-[104px] md:top-[100px] lg:top-[110px] left-auto lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-base">
+              <div className="artisteName lg:absolute fixed top-[95px] lg:w-52 lg:top-[110px] left-auto lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-base">
                 {artist}
               </div>
             </div>
