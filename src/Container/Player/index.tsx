@@ -25,6 +25,7 @@ const Player: FC = () => {
   // Music file
   const allMusic = [
     {
+      id: 0,
       title: "first song",
       src: music,
       artist: "Austine Emmanuel",
@@ -32,6 +33,7 @@ const Player: FC = () => {
       singer: "1",
     },
     {
+      id: 1,
       title: "second song",
       src: musics,
       artist: "Austine Emmanuel",
@@ -39,6 +41,7 @@ const Player: FC = () => {
       singer: "2",
     },
     {
+      id: 2,
       title: "third song",
       src: music,
       artist: "Austine Emmanuel",
@@ -46,6 +49,7 @@ const Player: FC = () => {
       singer: "3",
     },
     {
+      id: 3,
       title: "fourth song",
       src: musics,
       artist: "Austine Emmanuel",
@@ -53,6 +57,7 @@ const Player: FC = () => {
       singer: "4",
     },
     {
+      id: 4,
       title: "fifth song",
       src: music,
       artist: "Austine Emmanuel",
@@ -60,6 +65,7 @@ const Player: FC = () => {
       singer: "5",
     },
     {
+      id: 5,
       title: "sixth song",
       src: musics,
       artist: "Austine Emmanuel",
@@ -67,6 +73,7 @@ const Player: FC = () => {
       singer: "6",
     },
     {
+      id: 6,
       title: "seventh song",
       src: music,
       artist: "Austine Emmanuel",
@@ -83,25 +90,29 @@ const Player: FC = () => {
   const [showPlayPause, setShowPlayPause] = useState(true);
   const [speaker, setSpeaker] = useState<number>(50);
 
+  const [trackProgress, setTrackProgress] = useState<number>(0);
+  const [nextSongIndex,setNextSongIndex] = useState(trackProgress + 1);
+
   const { title, src, artist, img, singer } = allMusic[songIndex];
 
   const audioTag = useRef(new Audio(src));
 
-  const [trackProgress, setTrackProgress] = useState<number>(0);
-
   const { duration } = audioTag.current;
 
+  useEffect(() => {
+    setNextSongIndex(() => {
+      if (trackProgress + 1 > allMusic.length - 1) {
+        return 0;
+      } else {
+        return trackProgress + 1;
+      }
+    });
+  }, [trackProgress]);
+
   // music player button Control
-  const handleBack = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    console.log("back");
-    if (songIndex - 1 < 0) {
-      setSongIndex(allMusic.length - 1);
-    } else {
-      setSongIndex(songIndex - 1);
-    }
-  };
+
   const handlePlay = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    // useEffect(() => {
+
     if (!isPlaying) {
       console.log("play");
       audioTag.current.play();
@@ -118,7 +129,6 @@ const Player: FC = () => {
 
       setShowPlayPause(true);
     }
-    // }, [isPlaying]);
   };
 
   const handleNext = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -130,15 +140,17 @@ const Player: FC = () => {
     }
   };
 
-  // useEffect(() => {
-  //   setSongIndex(() => {
-  //     if (trackProgress + 1 > allMusic.length - 1) {
-  //       return 0;
-  //     } else {
-  //       return trackProgress + 1;
-  //     }
-  //   });
-  // }, [trackProgress]);
+  const handleBack = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    console.log("back");
+    let temp = songIndex;
+    temp--;
+
+    if (songIndex - 1 < 0) {
+      setSongIndex(allMusic.length - 1);
+    } else {
+      setSongIndex(songIndex - 1);
+    }
+  };
 
   const handleMute = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (speaker > 0) {
@@ -166,8 +178,8 @@ const Player: FC = () => {
 
   return (
     <>
-      <div className="grid place-items-center h-[95vh]">
-        <div className="player relative flex flex-col rounded-lg lg:flex-row min-h-[90vh] w-full lg:h-4/5  items-center justify-center bg-gradient-to-r from-[#5D6D7E] to-[#566573]">
+      <div className="grid place-items-center mt-10 md:w-[80%]">
+        <div className="player relative flex flex-col rounded-lg lg:flex-row min-h-[70vh] md:min-h-[90vh] w-full lg:h-4/5  items-center justify-center bg-gradient-to-r from-[#5D6D7E] to-[#566573]">
           <div className="logo flex items-center absolute top-2.5 left-[30px] text-[#ccc]">
             <SiApplemusic size={32} className="mr-2" /> Music
           </div>
@@ -178,7 +190,7 @@ const Player: FC = () => {
               src={img}
               alt="current music album"
               srcSet=""
-              className=" h-[350px] lg:h-[300px] min-w-[90%] shadow-[1px_0px_20px_12px_rgba(240,240,240,0.2)]  lg:w-4/5 rounded-2xl"
+              className="h-[200px] md:h-[350px] lg:h-[300px] min-w-[100%] w-full shadow-[1px_0px_20px_12px_rgba(240,240,240,0.2)]  lg:w-4/5 rounded-2xl"
             />
             <div className="volume lg:absolute hidden bottom-[10%] lg:left-0 w-full lg:flex h-[30px] items-center justify-center text-[#fff]">
               <p className="volumeRange text-[15px] mx-1.5 px-2 py-1">
@@ -209,17 +221,17 @@ const Player: FC = () => {
 
           {/* Right Side */}
           <div className="right relative h-full w-1/2 flex items-center justify-center flex-col">
-            <div className="song_Num top-[56px] fixed lg:absolute flex items-center justify-center right-2.5 md:right-[70px] lg:right-2.5 lg:top-2.5 py-1 px-2.5 text-base text-white rounded-md bg-[rgba(255,255,255,0.2)]">
+            <div className="song_Num top-[56px] fixed lg:absolute flex items-center justify-center right-[2.625rem] md:right-[70px] lg:right-2.5 lg:top-2.5 py-1 px-2.5 text-base text-white rounded-md bg-[rgba(255,255,255,0.2)]">
               <span className="current mr-1">{singer}</span>
               <span className="">/</span>
               <span className="total ml-1">{allMusic.length}</span>
             </div>
 
             <div className="">
-              <div className="songTitle lg:absolute fixed top-[75px] lg:w-52 left-auto lg:top-[60px] lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-3xl first-letter:uppercase">
+              <div className="songTitle lg:absolute fixed top-[100px] lg:w-52 left-auto lg:top-[60px] lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-3xl first-letter:uppercase">
                 {title}
               </div>
-              <div className="artisteName lg:absolute fixed top-[95px] lg:w-52 lg:top-[110px] left-auto lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-base">
+              <div className="artisteName lg:absolute fixed top-[120px] lg:w-52 lg:top-[110px] left-auto lg:left-1/2 -translate-x-1/2 lg:uppercase text-white text-sm lg:text-base">
                 {artist}
               </div>
             </div>

@@ -62,11 +62,11 @@ const Calculator: FC = () => {
   };
   return (
     <>
-      <div className="bg-[#FF6E7F] p-6 h-[90vh] mt-10 rounded-lg shadow-lg">
+      <div className="bg-[#21565e] p-6 h-[] mt-10 rounded-lg shadow-lg">
         <div className="mx-auto w-[90%] lg:w-[4/5] md:w-[450px] container">
           <div className="text-center">
             <div className="wrapper">
-              <h2 className="pb-1 text-3xl font-semibold font-Lacq">Loan Calculator</h2>
+              <h2 className="pb-1 text-3xl font-semibold text-white font-Lacq">Loan Calculator</h2>
               <form onSubmit={Calculate}>
                 <div className="amount-group py-3">
                   <div className="border-b-2 border-black w-full shadow-lg rounded-lg h-[50px] flex items-center text-lg font-semibold">
