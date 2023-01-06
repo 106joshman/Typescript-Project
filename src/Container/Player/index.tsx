@@ -152,6 +152,7 @@ const Player: FC = () => {
     }
   };
 
+
   const handleMute = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (speaker > 0) {
       setSpeaker(Number(0));
@@ -190,7 +191,7 @@ const Player: FC = () => {
               src={img}
               alt="current music album"
               srcSet=""
-              className="h-[200px] md:h-[350px] lg:h-[300px] min-w-[100%] w-full shadow-[1px_0px_20px_12px_rgba(240,240,240,0.2)]  lg:w-4/5 rounded-2xl"
+              className="h-[200px] md:h-[350px] lg:h-[300px] min-w-[100%] w-full shadow-[1px_0px_20px_12px_rgba(240,240,240,0.2)] lg:w-4/5 rounded-2xl"
             />
             <div className="volume lg:absolute hidden bottom-[10%] lg:left-0 w-full lg:flex h-[30px] items-center justify-center text-[#fff]">
               <p className="volumeRange text-[15px] mx-1.5 px-2 py-1">

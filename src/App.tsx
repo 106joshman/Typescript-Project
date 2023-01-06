@@ -9,17 +9,16 @@ import ShopperList from "./Container/ShopperList";
 function App() {
   return (
     <Router>
-      <div className="App flex h-screen">
-      <SideBar />
+      <div className="App flex h-[100vh]">
+        <SideBar />
         <div className="wrapper flex-1 flex-col bg-[#BFE9FF]">
           <div className="grid place-items-center">
-          {/* <Header /> */}
-          <Routes>
-            <Route index path="/"></Route>
-            <Route path="/calculator" element={<Calculator />}></Route>
-            <Route path="/player" element={<Player />}></Route>
-            <Route path="/shopperlist" element={<ShopperList />}></Route>
-          </Routes>
+            <Routes>
+              <Route index path="/"></Route>
+              <Route path="/calculator" element={<Calculator />}></Route>
+              <Route path="/player" element={<Player />}></Route>
+              <Route path="/shopperlist" element={<ShopperList />}></Route>
+            </Routes>
           </div>
         </div>
       </div>
